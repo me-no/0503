@@ -37,11 +37,11 @@ let font;
 
 function preload() {
     // Font
-    font = loadFont("assets/misaki_gothic.ttf");
+    font = loadFont("../assets/misaki_gothic.ttf");
 
     // Images
-    img = loadImage("assets/append/hackle-append-head.png");
-    imgbtm = loadImage("assets/append/hackle-append-chin.png");
+    img = loadImage("../assets/append/hackle-append-head.png");
+    imgbtm = loadImage("../assets/append/hackle-append-chin.png");
 }
 
 function setup () {
