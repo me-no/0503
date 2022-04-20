@@ -36,6 +36,8 @@ var  colorList = [
     ["brown" , "#342832", 2]   
 ]
 
+var scal = 32;
+
 var squareList = [];
 
 let img;
@@ -53,7 +55,7 @@ function preload() {
 }
 
 function setup () {
-    createCanvas(256, 350);
+    createCanvas(256*2, 350*2);
     noFill();
     background(0,0,30);
     for (col of colorList) {
@@ -65,34 +67,35 @@ function setup () {
 
 function draw() {
     //読み込んだ画像の表示
-    image(img, 0, 0);//top
+    image(img, 0, 0, 512, 224);//top
     //image(img, 0, 112);//bottom
-    image(imgbtm, 0, 160);
+    image(imgbtm, 0, 160*2, 512, 192);
     
     for (k = 0; k<48; k++) {//top => k=80, bottom => k=128, bottom2 => k=112, chin => k=48
         i = k - int(k/16)*16;
         j = int(k/16) + 7;//top => +11, head => +7
-        //j = int(k/16);
+        //j = int(k/scal);
         len = squareList.length;//squareList の長さ
         d = int(random(len));
         //d番目の色でドットを描く
         noStroke();
         fill(squareList[d]);
-        rect(i*16, j*16, 16, 16);
+        rect(i*scal, j*scal, scal, scal);
         squareList.splice(d, 1);
+        console.log(i);
 
         /* 先頭一行だけ青固定する場合はこちら
-        if (k < 16) {
+        if (k < scal) {
             noStroke();
             fill(squareList[i]);
-            rect(i*16, j*16, 16,16);
+            rect(i*scal, j*scal, scal,scal);
             squareList.splice(i, 1)
         } else {
             d = int(random(len));
             //d番目の色でドットを描く
             noStroke();
             fill(squareList[d]);
-            rect(i*16, j*16, 16, 16);
+            rect(i*scal, j*scal, scal, scal);
             squareList.splice(d, 1);
         }
         */
@@ -109,14 +112,14 @@ function draw() {
 	var str = year + "/" + month + "/" + date + " " + mkSign(hours, minutes, seconds);
 	fill(255, 255, 255);
 	noStroke();
-    textSize(14);
+    textSize(28);
     textFont(font);
-	text("オリさく！#2", 20, 280);
-	text(str, 20, 300);
+	text("オリさく！#2", 20, 280*2);
+	text(str, 20, 300*2);
     textAlign(RIGHT);
     fill(100,100, 130);
-    textSize(12);
-    text("#ドット絵再考察", 0, 325, width);
+    textSize(24);
+    text("#ドット絵再考察", 0, 325*2, width);
     //textSize(10);
     //text("@RyntaloL", 0, 340, width);
 
