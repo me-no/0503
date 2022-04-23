@@ -24,6 +24,7 @@ function preload() {
     //img = loadImage("assets/hackle-top.png");
     //img = loadImage("assets/hackle-bottom2.png");
     img = loadImage("../assets/star/hackle-star.png");
+    imgRare = loadImage("../assets/star/hackle-star-cancel.png");
 }
 
 function setup () {
@@ -135,6 +136,11 @@ function draw() {
     }
 
     //読み込んだ画像の表示
-    image(img, 0, scal*8);//top
+    imgDice = int(random(15));
+    if(imgDice === 1 ){
+        image(imgRare, 0, scal*8);
+    } else {
+        image(img, 0, scal*8);//top
+    }
     noLoop();
 }
