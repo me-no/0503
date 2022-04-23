@@ -85,10 +85,15 @@ function draw() {
     // ランダムな星を生成_星雲
     starColors.splice(0,1);
     x_separation = 10000;
+    curvature = int(random(2,6));
     for (k = 0; k < x_separation; k++) {
         noiseVal = noise(noiseVar);
         xx = 1024/x_separation*k;
-        yy = sqrt(xx)*10 +noiseVal*300;
+        if(curvature === 5) {
+            yy = sqrt(xx)*10 +noiseVal*300;
+        } else {
+            yy = -(xx*xx/(curvature*1000) +noiseVal*300)+600;
+        }
         r = int(random(1,3));
         tr = random(50,100);
         d = int(random(0, starColors.length));
@@ -98,6 +103,17 @@ function draw() {
         noStroke();
         fill(colr, colg, colb, tr);
         rect(xx, yy, r/4*scal, r/4*scal);
+        if(80<tr && tr <80.001 && r === 1){
+            console.log(tr);
+            console.log(r);
+            tr_temp = tr;
+            count = 0;
+            for(count= 0; count < 16; count++){
+                fill(colr, colg, colb, tr_temp);
+                rect(xx+(count+1)*r/4*scal, yy+(count+1)*r/4*scal, r/4*scal, r/4*scal);
+                tr_temp += 20;
+            }
+        }
 
         noiseVar += 0.4;
     }
