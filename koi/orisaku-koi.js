@@ -60,8 +60,8 @@ function draw() {
     for (i = 0; i < 12; i++){
         var y = map(noise(xlefttop, ylefttop), 0, 1, topY_1-4*scal, topY_1+4*scal);
         var x = topX_3 - (topX_3-topX_1)/10*i;
-        var wid_i = map(i, 0, 11, 9, 27);
-        var hei_i = map(i, 0, 11, 16, 48);
+        var wid_i = map(i, 0, 11, 9, 36);
+        var hei_i = map(i, 0, 11, 16, 64);
         var k = (topY_3-topY_1)/(topX_3-topX_1);
         image(koiye, x, y+scal*4+k*(x-topX_1) , wid_i, hei_i);
         xlefttop += 0.02;
@@ -73,8 +73,8 @@ function draw() {
     for (i = 0; i < 12; i++){
         var y = map(noise(xleftmid, yleftmid), 0, 1, topY_1-4*scal, topY_1+4*scal);
         var x = topX_3 - (topX_3-topX_1)/10*i;
-        var wid_i = map(i, 0, 11, 9, 27);
-        var hei_i = map(i, 0, 11, 16, 48);
+        var wid_i = map(i, 0, 11, 9, 36);
+        var hei_i = map(i, 0, 11, 16, 64);
         var k = (topY_3-topY_1)/(2*(topX_3-topX_1));
         image(koiye, x, y+scal*4+k*(x-topX_1) + height_1/3, wid_i, hei_i);
         xleftmid += 0.02;
@@ -86,8 +86,8 @@ function draw() {
     for (i = 0; i < 12; i++){
         var y = map(noise(xrighttop, yrighttop), 0, 1, topY_3-4*scal, topY_3+4*scal);
         var x = topX_3+width_3 + (topX_3-topX_1)/10*i;
-        var wid_i = map(i, 0, 11, 9, 27);
-        var hei_i = map(i, 0, 11, 16, 48);
+        var wid_i = map(i, 0, 11, 9, 36);
+        var hei_i = map(i, 0, 11, 16, 64);
         var k = (topY_3-topY_1)/(topX_3-topX_1);
         image(koiaq, x-36, y+scal*4-k*(x-(topX_3+width_3)), wid_i, hei_i);
         xrighttop += 0.02;
@@ -99,8 +99,8 @@ function draw() {
     for (i = 0; i < 12; i++){
         var y = map(noise(xrightmid, yrightmid), 0, 1, topY_3-4*scal, topY_3+4*scal);
         var x = topX_3+width_3 + (topX_3-topX_1)/10*i;
-        var wid_i = map(i, 0, 11, 9, 27);
-        var hei_i = map(i, 0, 11, 16, 48);
+        var wid_i = map(i, 0, 11, 9, 36);
+        var hei_i = map(i, 0, 11, 16, 64);
         var k = (topY_3-topY_1)/(2*(topX_3-topX_1));
         image(koired, x-36, y+scal*4-k*(x-(topX_3+width_3)) + height_3/4, wid_i, hei_i);
         xrightmid += 0.02;
