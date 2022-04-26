@@ -1,11 +1,11 @@
 var scal = 4;
 
 var topX_1 = 83*scal;
-var topY_1 = 64*scal+369;
+var topY_1 = 64*scal;
 var topX_2 = 100*scal;
-var topY_2 = 102*scal+369;
+var topY_2 = 102*scal;
 var topX_3 = 109*scal;
-var topY_3 = 121*scal+369;
+var topY_3 = 121*scal;
 
 var width_1 = 98*scal;
 var height_1 = 118*scal;
@@ -46,14 +46,14 @@ function preload() {
 }
 
 function setup () {
-    createCanvas(1024, 1024+369);
+    createCanvas(1024, 1024);
     noFill();
     background(255);
 }
 
 function draw() {
     //読み込んだ画像の表示
-    image(imgbk, 0, 369, 1024, 1024);
+    image(imgbk, 0, 0, 1024, 1024);
 
     // 左斜一段目
     var xlefttop = 0;
@@ -149,7 +149,7 @@ function draw() {
     */
 
     // Hackle くんの表示
-    image(imghk, 0,369,1024,1024);
+    image(imghk, 0,0,1024,1024);
 }
 
 /*
