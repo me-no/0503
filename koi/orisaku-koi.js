@@ -52,11 +52,6 @@ function setup () {
 }
 
 function draw() {
-    // 下部を青で塗りつぶし
-    noStroke();
-    fill("#B5F9FF");
-    rect(0, 1024+256, width, 256);
-
     //読み込んだ画像の表示
     image(imgbk, 0, 369, 1024, 1024);
 
