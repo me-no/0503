@@ -46,7 +46,7 @@ function preload() {
 }
 
 function setup () {
-    createCanvas(1024, 1024+512);
+    createCanvas(1024, 1024+369);
     noFill();
     background(255);
 }
