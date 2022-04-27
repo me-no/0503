@@ -10,9 +10,10 @@ function preload() {
 }
 
 function setup () {
-    createCanvas(256, 350);
+    let canvas = createCanvas(256, 350);
     noFill();
     background(0,0,30);
+    canvas.parent('canvas');
 }
 
 function draw() {

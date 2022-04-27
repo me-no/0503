@@ -4,17 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Password</title>
+    <title>隠れ家 - ドット絵再考察</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="padlock.svg" type="image/svg+xml">
     <script type="text/javascript" src="sha256.js"></script>
   </head>
   <body>
     <form id="form">
-      <p id="message">Please enter your password.</p>
-      <input type="password" placeholder="password" id="password">
-    </form>
+      <p id="message">
+        よくここが 分かったね．<br />
+        Hackle くんまで あと少しだよ．<br /><br />
+        パスワードは さっきのページに 堂々と書いてあるみたいだけど<br />
+        気がついたかな．<br /><br />
+        どうやら 今日の日付の2進数表示 みたいだよ...
+      </p>
+      <input type="password" placeholder="パスワードを入れてエンターを押す_" id="password">
+      <p style="opacity: 80%;">■</p>
+      <p style="opacity: 60%;">■</p>
+      <p style="opacity: 40%;">■</p>
+  </form>
     <script>
       function hash(text) {
         const sha = new jsSHA('SHA-256', 'TEXT');
@@ -32,13 +39,13 @@
           } else {
             const message = document.getElementById('message');
             const input = document.getElementById('password');
-            message.innerHTML = 'Wrong password! Try again.';
+            message.innerHTML = '<img src="../assets/append/wanted-appendix2.png" style="width: 256px;">';
             input.value = '';
           }
         };
         xhr.onerror = function () {
           const message = document.getElementById('message');
-          message.innerHTML = 'Sorry, ERROR !';
+          message.innerHTML = 'エラーデス．ハイリナオシテクダサイ．';
         };
       }
       const form = document.getElementById('form');
@@ -49,4 +56,35 @@
       });
     </script>
   </body>
+
+<style type="text/css">
+  @font-face {
+    font-family: 'misaki-gothic';
+    src: url(../assets/misaki_gothic.ttf);
+  }
+
+  body {
+  	font-family: misaki-gothic;
+    text-align: center;
+    font-size: 24px;
+    background-color: #002136;
+    color: rgb(200, 210, 240);
+    line-height: 2em;
+  }
+  input {
+    font-family: misaki-gothic;
+    margin: 20px 0;
+    width: 80%;
+    height: 50px;
+    border-radius: 1px;
+    color: rgb(200, 210, 240);
+    -webkit-text-fill-color: rgb(200, 210, 240);
+    background-color: rgb(10, 20, 40);
+    font-size: 24px;
+  }
+  #message {
+    padding-top: 40px;
+  }
+</style>
+
 </html>
