@@ -25,6 +25,7 @@ function preload() {
     //img = loadImage("assets/hackle-bottom2.png");
     img = loadImage("../assets/star/hackle-star.png");
     imgRare = loadImage("../assets/star/hackle-star-cancel.png");
+    imgHint = loadImage("../assets/star/hackle-star-hint.png");
 }
 
 function setup () {
@@ -90,7 +91,7 @@ function draw() {
     for (k = 0; k < x_separation; k++) {
         noiseVal = noise(noiseVar);
         xx = 1024/x_separation*k;
-        if(curvature === 5) {
+        if(curvature === 5) {// 星雲のカーブの曲率を決める
             yy = sqrt(xx)*10 +noiseVal*300;
         } else {
             yy = -(xx*xx/(curvature*1000) +noiseVal*300)+600;
@@ -136,9 +137,13 @@ function draw() {
     }
 
     //読み込んだ画像の表示
-    imgDice = int(random(15));
+    imgDice = int(random(8));
     if(imgDice === 1 ){
-        image(imgRare, 0, scal*8);
+        if (curvature === 5){
+            image(imgHint, 0, scal*8);
+        } else {
+            image(imgRare, 0, scal*8);
+        }
     } else {
         image(img, 0, scal*8);//top
     }
