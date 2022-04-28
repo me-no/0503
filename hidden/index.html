@@ -10,17 +10,18 @@
   </head>
   <body>
     <form id="form">
+      <h1>#ドット絵再考察</h1>
       <p id="message">
         よくここが 分かったね．<br />
         Hackle くんまで あと少しだよ．<br /><br />
-        パスワードは さっきのページに 堂々と書いてあるみたいだけど<br />
-        気がついたかな．<br /><br />
+        パスワードは さっきのページに でかでかと<br />
+        かいてあるみたいだけど 気がついたかな．<br /><br />
         どうやら 今日の日付の2進数表示 みたいだよ...
       </p>
       <input type="password" placeholder="パスワードを入れてエンターを押す_" id="password">
-      <p style="opacity: 80%;">■</p>
-      <p style="opacity: 60%;">■</p>
-      <p style="opacity: 40%;">■</p>
+      <p style="opacity: 80%;">.</p>
+      <p style="opacity: 60%;">.</p>
+      <p style="opacity: 40%;">.</p>
   </form>
     <script>
       function hash(text) {
@@ -66,21 +67,26 @@
   body {
   	font-family: misaki-gothic;
     text-align: center;
-    font-size: 24px;
+    font-size: 18px;
     background-color: #002136;
     color: rgb(200, 210, 240);
     line-height: 2em;
   }
+  h1 {
+    padding-top: 40px; 
+    opacity: 50%;
+    font-size: 16px;
+  }
   input {
     font-family: misaki-gothic;
     margin: 20px 0;
-    width: 80%;
-    height: 50px;
-    border-radius: 1px;
+    width: 50%;
+    height: 40px;
+    /*border-radius: 20px;*/
     color: rgb(200, 210, 240);
     -webkit-text-fill-color: rgb(200, 210, 240);
     background-color: rgb(10, 20, 40);
-    font-size: 24px;
+    font-size: 20px;
   }
   #message {
     padding-top: 40px;
