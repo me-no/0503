@@ -10,7 +10,7 @@ function preload() {
 }
 
 function setup () {
-    let canvas = createCanvas(256, 350);
+    let canvas = createCanvas(256*2, 350*2);
     noFill();
     background(0,0,30);
     canvas.parent('canvas');
@@ -18,7 +18,7 @@ function setup () {
 
 function draw() {
     //読み込んだ画像の表示
-    image(img, 0, 0);//top
+    image(img, 0, 0, 512, 512);//top
     
     //タイトルと日付を挿入
     var dt    = new Date();
@@ -32,15 +32,15 @@ function draw() {
 	var str = year + "/" + month + "/" + date + " " + mkSign(hours, minutes, seconds);
 	fill(255, 255, 255);
 	noStroke();
-    textSize(14);
+    textSize(28);
     textFont(font);
-	text("オリさく！#2", 20, 280);
-	text(str, 20, 300);
+	text("オリさく！#2", 20*2, 280*2);
+	text(str, 20*2, 300*2);
     textAlign(RIGHT);
     fill(100,100, 130);
-    textSize(12);
-    text("#ドット絵再考察", 0, 325, width);
-    text("# Hackle くん発見", 0, 345, width);
+    textSize(24);
+    text("#ドット絵再考察", 0, 325*2, width);
+    text("# Hackle くん発見", 0, 345*2, width);
     //textSize(10);
     //text("@RyntaloL", 0, 340, width);
 
