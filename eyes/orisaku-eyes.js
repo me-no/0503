@@ -9,8 +9,11 @@ var colorList = [//name, code, tileNumber
 
 // キャンバスサイズに関わる変数
 var scal = 4;
-var xSize = 128*scal;
-var ySize = 128*scal;
+var xSize = 256*scal;
+var ySize = 256*scal;
+// 絵の開始点
+var a = xSize/6;
+var b = ySize/6;
 
 // 描画する座標情報
 var r1 = [21*scal, 24*scal];
@@ -34,8 +37,8 @@ var l8 = [34*scal, 27*scal];
 var leftCells = [l1,l2,l3,l4,l5,l6,l7,l8];
 
 // ベジェ曲線の固定点
-var x1 = 0;
-var y1 = ySize/2 + ySize/4;
+var x1 = 50*scal+a;
+var y1 = 70*scal+b;
 var x2 = xSize;
 var y2 = ySize/2 + ySize/4;
 
@@ -59,7 +62,7 @@ function preload() {
 function setup () {
     createCanvas(xSize, ySize);
     noFill();
-    background(0,0,30);
+    background(255);
     for (col of colorList) {
         for(i = 0; i < col[2]; i++) {
             squareList.push(col[1]);
@@ -73,9 +76,9 @@ function setup () {
 
     //読み込んだ画像の表示
     if (imgDice%2 === 0){
-        image(imgpant, 0, 0, 96*scal, 96*scal);
+        image(imgpant, a, b, 96*scal, 96*scal);
     } else {
-        image(imgskirt, 0,0, 96*scal, 96*scal);
+        image(imgskirt, a, b, 96*scal, 96*scal);
     }
     console.log(imgDiceFloat);
 }
@@ -86,51 +89,62 @@ function draw() {
 
     fill(0,0,30);
     noStroke();
-    rect(0,ySize/3,width,ySize);
+    //rect(0,ySize/3,width,ySize);
     // 変数の決定
-    let placeDiceLeft = int(random(leftCells.length));
-    let placeDiceRight = int(random(rightCells.length));
+    let placeDiceLeftFloat = random(leftCells.length);
+    let placeDiceRightFloat = random(rightCells.length);
+    let placeDiceLeft = int(placeDiceLeftFloat);
+    let placeDiceRight = int(placeDiceRightFloat);
 
     let colorDiceLeft = int(random(colorList.length));
     let colorDiceRight = int(random(colorList.length));
     
     // 背景の曲線の描画
-    stroke(255,255,255,50);
-    strokeWeight(5);
+    stroke(103,96,127,10);
+    strokeWeight(7);
     noFill();
-    bezier(x1,y1,xSize/4,placeDiceLeft*100+ySize/4, (xSize/4)*3, (ySize-placeDiceRight*100)+ySize/4,x2,y2);
-    stroke(255,255,255,90);
+    //bezier(x1,y1,x1+(x2-x1)/2,placeDiceLeftFloat*30+y1+(y2-y1)/4,x1+(x2-x1)/2,placeDiceLeftFloat*30+y1+(y2-y1)/4,x2,y2);
+    // 開始アンカーポイント
+    var anchorx1 = (-leftCells.length + placeDiceLeftFloat)*10+x1;
+    var anchory1 = (-x2+x1)/(y2-y1)*(anchorx1-(x2-x1)/4-x1)+(y2-y1)/4+y1;
+    var anchorx2 = (-rightCells.length + placeDiceRightFloat)*10+x2;
+    var anchory2 = (-x2+x1)/(y2-y1)*(anchorx2-(x2-x1)/4-x2)+(y2-y1)/4+y2;
+    bezier(x1,y1,anchorx1, anchory1,anchorx2,anchory2,x2,y2);
+    stroke(103,96,127,30);
     strokeWeight(1);
     noFill();
-    bezier(x1,y1,xSize/4,placeDiceLeft*100+ySize/4, (xSize/4)*3, (ySize-placeDiceRight*100)+ySize/4,x2,y2);
+    //bezier(x1,y1,x1+(x2-x1)/2,placeDiceLeftFloat*30+y1+(y2-y1)/4,x1+(x2-x1)/2,placeDiceLeftFloat*30+y1+(y2-y1)/4,x2,y2);
+    rect(anchorx1, anchory1, scal, scal);
+    rect(anchorx2, anchory2, scal, scal);
+    //console.log(anchorx2);
 
     // 曲線の上からドット絵を描画
     if(imgDice%2 === 0) {
-        image(imgpantbtm, 0, 0, 96*scal, 96*scal);
+        image(imgpantbtm, a, b, 96*scal, 96*scal);
     } else {
-        image(imgskirtbtm, 0, 0, 96*scal, 96*scal);
+        image(imgskirtbtm, a, b, 96*scal, 96*scal);
     }
 
 
     // 目の描画
     fill(colorList[colorDiceRight][1]);
     noStroke();
-    rect(rightCells[placeDiceRight][0], rightCells[placeDiceRight][1], scal, scal);
+    rect(rightCells[placeDiceRight][0] +a, rightCells[placeDiceRight][1] +b, scal, scal);
 
     fill(colorList[colorDiceLeft][1]);
     noStroke();
-    rect(leftCells[placeDiceLeft][0], leftCells[placeDiceLeft][1], scal, scal);
+    rect(leftCells[placeDiceLeft][0] +a, leftCells[placeDiceLeft][1] +b, scal, scal);
 
     // テキストの描画
-    fill(0,0,30);
-    rect(width-30, 0, 28, (20+28)*2);
-	fill(255, 255, 255);
+    fill(255);
+    rect(width-30, ySize/3, 28, (20+28)*2);
+	fill(103,96,127);
 	noStroke();
     textSize(28);
     textFont(font);
     textAlign(RIGHT);
-	text("colorDiceRight: " + colorDiceRight, 10,38, width);
-	text("colorDiceLeft: " + colorDiceLeft, 10,38*2, width);
+	text("colorDiceRight: " + colorDiceRight, 10,38+ySize/3, width);
+	text("colorDiceLeft: " + colorDiceLeft, 10, 38*2+ySize/3, width);
 
     //console.log(colorDiceLeft);
 }
