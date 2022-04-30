@@ -8,7 +8,7 @@ var colorList = [//name, code, tileNumber
 ];
 
 // キャンバスサイズに関わる変数
-var scal = 6;
+var scal = 4;
 var xSize = 128*scal;
 var ySize = 128*scal;
 
