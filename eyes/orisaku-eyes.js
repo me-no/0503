@@ -39,17 +39,17 @@ var leftCells = [l1,l2,l3,l4,l5,l6,l7,l8];
 // ベジェ曲線の固定点
 var x1 = 50*scal+a;
 var y1 = 70*scal+b;
-var x2 = xSize*5/4;
-var y2 = (ySize/2 + ySize/4)*5/4;
+var x2 = xSize*1;
+var y2 = (ySize/2 + ySize/4)*1;
 // 直交する線上の点
 var vert = -(x2-x1)/(y2-y1);
 var xx1 = x1;
 var yy1 = y1 + ySize/6;
-var xx2 = x1 + xSize/8;
+var xx2 = x1 + xSize/6;
 var yy2 = yy1 + vert * (xx2-xx1);
-var vv1 = x2 - xSize/8;
+var vv1 = x2 - xSize/10;
 var ww1 = y2 + ySize/6;
-var vv2 = x2;
+var vv2 = x2 + xSize/16;
 var ww2 = ww1 + vert * (vv2-vv1);
 
 // パーリンノイズ初期値
@@ -168,17 +168,17 @@ function draw() {
     // アンカーポイントを描画
     //rect(anchorx1, anchory1, scal, scal);
     //rect(anchorx2, anchory2, scal, scal);
+    */
     // ノイズの更新
     paraNoiseL += 0.1;
     paraNoiseR += 0.3;
-    */
     // ##############################################
     // ランダムとパーリンノイズの切り替えポイントその2 ここまで
     // ##############################################
 
 
     stroke(103,96,127,30);
-    strokeWeight(5);
+    strokeWeight(2);
     noFill();
     // 曲線を描画
     bezier(x1,y1,anchorx1, anchory1,anchorx2,anchory2,x2,y2);
@@ -226,15 +226,19 @@ function draw() {
     rect(width-30, ySize/3-28*2, 28, (20+28)*4);
 	fill(103,96,127);
 	noStroke();
-    textSize(28);
+    textSize(24);
     textFont(font);
     textAlign(RIGHT);
-	text("placeDiceLeft: " + placeDiceLeft, 10,38-28*2+ySize/3, width);
-	text("placeDiceRight: " + placeDiceRight, 10,38-28+ySize/3, width);
-	text("placeNoiseLeft: " + placeNoiseLeft, 10,38+ySize/3, width);
-	text("placeNoiseRight: " + placeNoiseRight, 10, 38+28+ySize/3, width);
-	text("colorDiceLeft: " + colorDiceLeft, 10, 38+28*2+ySize/3, width);
-	text("colorDiceRight: " + colorDiceRight, 10, 38+28*3+ySize/3, width);
+	text("placeDiceLeft: " + placeDiceLeft, 0,38-28*2+ySize/3, width);
+	text("placeDiceRight: " + placeDiceRight, 0,38-28+ySize/3, width);
+	text("placeNoiseLeft: " + placeNoiseLeft, 0,38+ySize/3, width);
+	text("placeNoiseRight: " + placeNoiseRight, 0, 38+28+ySize/3, width);
+	text("colorDiceLeft: " + colorDiceLeft, 0, 38+28*2+ySize/3, width);
+	text("colorDiceRight: " + colorDiceRight, 0, 38+28*3+ySize/3, width);
 
-    //console.log(colorDiceLeft);
+    fill(255);
+    noStroke();
+    textSize(10);
+    text("#ドット絵再考察", 0, y2-15, width);
+    text("さよならさんすう", 0, y2, width);
 }
