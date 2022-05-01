@@ -64,13 +64,13 @@ let imgDiceFloat = Math.random()*10;
 
 function preload() {
     // Font
-    font = loadFont("../assets/misaki_gothic.ttf");
+    font = loadFont("../../assets/misaki_gothic.ttf");
 
     // Images
-    imgskirt = loadImage("../assets/eyes/eyes-skirt.png");
-    imgpant = loadImage("../assets/eyes/eyes-pant.png");
-    imgskirtbtm = loadImage("../assets/eyes/eyes-skirt-bottom.png");
-    imgpantbtm = loadImage("../assets/eyes/eyes-pant-bottom.png");
+    imgskirt = loadImage("../../assets/eyes/eyes-skirt.png");
+    imgpant = loadImage("../../assets/eyes/eyes-pant.png");
+    imgskirtbtm = loadImage("../../assets/eyes/eyes-skirt-bottom.png");
+    imgpantbtm = loadImage("../../assets/eyes/eyes-pant-bottom.png");
 }
 
 function setup () {
