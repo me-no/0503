@@ -41,6 +41,13 @@ var x1 = 50*scal+a;
 var y1 = 70*scal+b;
 var x2 = xSize;
 var y2 = ySize/2 + ySize/4;
+// 直交する線上の点
+var vert = -(x2-x1)/(y2-y1);
+var xx1 = x1;
+var yy1 = y1 + ySize/6;
+var xx2 = x1 + xSize/8;
+var yy2 = yy1 + vert * (xx2-xx1);
+
 
 // その他の変数
 var squareList = [];
@@ -100,23 +107,37 @@ function draw() {
     let colorDiceRight = int(random(colorList.length));
     
     // 背景の曲線の描画
+    stroke(255,0,0);
+    noFill();
+    line(x1, y1, x2,y2);
+    line(xx1, yy1, xx2, yy2);
+
+    //bezier(x1,y1,x1+(x2-x1)/2,placeDiceLeftFloat*30+y1+(y2-y1)/4,x1+(x2-x1)/2,placeDiceLeftFloat*30+y1+(y2-y1)/4,x2,y2);
+    // 交点
+    var x0 = x1+(x2-x1)/4;
+    var y0 = (y2+3*y1)/4;
+    // 開始アンカーポイント
+    var parax = xx1 + (xx2-xx1)*(leftCells.length - placeDiceLeftFloat)/leftCells.length;
+    var paray = vert * (parax - xx1) + yy1;
+    var anchorx1 = parax;//(-leftCells.length + placeDiceLeftFloat)*10+x1;
+    var anchory1 = paray;//(-x2+x1)/(y2-y1)*(anchorx1-x0)+y0;
+    var anchorx2 = (-rightCells.length + placeDiceRightFloat)*10+x2;
+    var anchory2 = (-x2+x1)/(y2-y1)*(anchorx2-(x2-x1)/4-x2)+(y2-y1)/4+y2;
+    // アンカーポイントを描画
+    rect(anchorx1, anchory1, scal, scal);
+    rect(anchorx2, anchory2, scal, scal);
+    console.log(paray);
+
     stroke(103,96,127,10);
     strokeWeight(7);
     noFill();
-    //bezier(x1,y1,x1+(x2-x1)/2,placeDiceLeftFloat*30+y1+(y2-y1)/4,x1+(x2-x1)/2,placeDiceLeftFloat*30+y1+(y2-y1)/4,x2,y2);
-    // 開始アンカーポイント
-    var anchorx1 = (-leftCells.length + placeDiceLeftFloat)*10+x1;
-    var anchory1 = (-x2+x1)/(y2-y1)*(anchorx1-(x2-x1)/4-x1)+(y2-y1)/4+y1;
-    var anchorx2 = (-rightCells.length + placeDiceRightFloat)*10+x2;
-    var anchory2 = (-x2+x1)/(y2-y1)*(anchorx2-(x2-x1)/4-x2)+(y2-y1)/4+y2;
+    // 曲線を描画
     bezier(x1,y1,anchorx1, anchory1,anchorx2,anchory2,x2,y2);
     stroke(103,96,127,30);
     strokeWeight(1);
     noFill();
     //bezier(x1,y1,x1+(x2-x1)/2,placeDiceLeftFloat*30+y1+(y2-y1)/4,x1+(x2-x1)/2,placeDiceLeftFloat*30+y1+(y2-y1)/4,x2,y2);
-    rect(anchorx1, anchory1, scal, scal);
-    rect(anchorx2, anchory2, scal, scal);
-    //console.log(anchorx2);
+    //console.log(-leftCells.length + placeDiceLeftFloat);
 
     // 曲線の上からドット絵を描画
     if(imgDice%2 === 0) {
