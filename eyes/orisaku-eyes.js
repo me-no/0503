@@ -47,6 +47,10 @@ var xx1 = x1;
 var yy1 = y1 + ySize/6;
 var xx2 = x1 + xSize/8;
 var yy2 = yy1 + vert * (xx2-xx1);
+var vv1 = x2 - xSize/8;
+var ww1 = y2 + ySize/6;
+var vv2 = x2;
+var ww2 = ww1 + vert * (vv2-vv1);
 
 
 // その他の変数
@@ -111,6 +115,7 @@ function draw() {
     noFill();
     line(x1, y1, x2,y2);
     line(xx1, yy1, xx2, yy2);
+    line(vv1, ww1, vv2, ww2);
 
     //bezier(x1,y1,x1+(x2-x1)/2,placeDiceLeftFloat*30+y1+(y2-y1)/4,x1+(x2-x1)/2,placeDiceLeftFloat*30+y1+(y2-y1)/4,x2,y2);
     // 交点
@@ -121,8 +126,11 @@ function draw() {
     var paray = vert * (parax - xx1) + yy1;
     var anchorx1 = parax;//(-leftCells.length + placeDiceLeftFloat)*10+x1;
     var anchory1 = paray;//(-x2+x1)/(y2-y1)*(anchorx1-x0)+y0;
-    var anchorx2 = (-rightCells.length + placeDiceRightFloat)*10+x2;
-    var anchory2 = (-x2+x1)/(y2-y1)*(anchorx2-(x2-x1)/4-x2)+(y2-y1)/4+y2;
+    // 終了アンカーポイント
+    var parav = vv1 + (vv2-vv1)*(rightCells.length - placeDiceRightFloat)/rightCells.length;
+    var paraw = vert * (parav - vv1) + ww1;
+    var anchorx2 = parav;//(-rightCells.length + placeDiceRightFloat)*10+x2;
+    var anchory2 = paraw;//(-x2+x1)/(y2-y1)*(anchorx2-(x2-x1)/4-x2)+(y2-y1)/4+y2;
     // アンカーポイントを描画
     rect(anchorx1, anchory1, scal, scal);
     rect(anchorx2, anchory2, scal, scal);
