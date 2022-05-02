@@ -150,6 +150,15 @@ function draw() {
 
     // Hackle くんの表示
     image(imghk, 0,0,1024,1024);
+
+    // sign
+    textFont(font);
+    textAlign(RIGHT);
+    fill(255);
+    noStroke();
+    textSize(12);
+    text("#ドット絵再考察", -10, height - 16*2, width);
+    text("さよならさんすう", -10, height - 16, width);
 }
 
 /*
