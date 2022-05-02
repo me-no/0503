@@ -39,19 +39,19 @@ var l8 = [34*scal, 27*scal];
 var leftCells = [l1,l2,l3,l4,l5,l6,l7,l8];
 
 // ベジェ曲線の固定点
-var x1 = 50*scal+a;
-var y1 = 70*scal+b;
-var x2 = xSize*1;
-var y2 = (ySize/2 + ySize/4)*1;
+var x1 = 46*scal+a;
+var y1 = 69*scal+b;
+var x2 = xSize*5/4;
+var y2 = (ySize/2 + ySize/4)*5/4;
 // 直交する線上の点
 var vert = -(x2-x1)/(y2-y1);
 var xx1 = x1;
 var yy1 = y1 + ySize/6;
 var xx2 = x1 + xSize/6;
 var yy2 = yy1 + vert * (xx2-xx1);
-var vv1 = x2 - xSize/10 - 4*scal;
-var ww1 = y2 + ySize/10;
-var vv2 = x2 + xSize/20 - 4*scal;
+var vv1 = x2 - xSize/10 - 34*scal;
+var ww1 = y2 + ySize/10 - 14*scal;
+var vv2 = x2 + xSize/20 - 34*scal;
 var ww2 = ww1 + vert * (vv2-vv1);
 
 // パーリンノイズ初期値
@@ -96,7 +96,6 @@ function setup () {
     } else {
         image(imgskirt, a, b, 96*scal, 96*scal);
     }
-    console.log(imgDiceFloat);
 }
 
 function draw() {    
@@ -150,14 +149,17 @@ function draw() {
     // #########################################
     // ランダムの場合
     // 開始アンカーポイント
-    var anchorx1 = xx1 + (xx2-xx1)*(leftCells.length - placeDiceLeftFloat)/leftCells.length;
+    //var anchorx1 = xx1 + (xx2-xx1)*(leftCells.length - placeDiceLeftFloat)/leftCells.length;
+    var anchorx1 = xx1 + (xx2-xx1)*placeDiceLeftFloat/leftCells.length;
     var anchory1 = vert * (anchorx1 - xx1) + yy1;
     // 終了アンカーポイント
-    var anchorx2 = vv1 + (vv2-vv1)*(rightCells.length - placeDiceRightFloat)/rightCells.length;
+    //var anchorx2 = vv1 + (vv2-vv1)*(rightCells.length - placeDiceRightFloat)/rightCells.length;
+    var anchorx2 = vv1 + (vv2-vv1)*placeDiceRightFloat/rightCells.length;
     var anchory2 = vert * (anchorx2 - vv1) + ww1;
     // アンカーポイントを描画
     //rect(anchorx1, anchory1, scal, scal);
     //rect(anchorx2, anchory2, scal, scal);
+    //console.log((leftCells.length - placeDiceLeftFloat)/leftCells.length);
 
     /*
     // パーリンノイズの場合
@@ -241,6 +243,6 @@ function draw() {
     fill(255);
     noStroke();
     textSize(10);
-    text("#ドット絵再考察", 0, y2-15, width);
-    text("さよならさんすう", 0, y2, width);
+    text("#ドット絵再考察", 0, ySize*4/5, width);
+    text("さよならさんすう", 0, ySize*4/5 + 15, width);
 }
