@@ -1,10 +1,12 @@
 var colorList = [//name, code, tileNumber
- ["blueline" , "#002136"],
- ["darkbrown" , "#684c3c"],
- ["lightbrown" , "#c39a5a"],
- ["skin", "#f3d48f"],
- ["white" , "#ffffff"],
- ["birth", "#438cb5"],//438cb5
+    ["blueline" , "#002136"],
+    ["darkbrown" , "#684c3c"],
+    ["darkbrown" , "#684c3c"],
+    ["lightbrown" , "#c39a5a"],
+    ["lightbrown" , "#c39a5a"],
+    ["skin", "#f3d48f"],
+    ["white" , "#ffffff"],
+    ["birth", "#438cb5"],//438cb5
 ];
 
 // キャンバスサイズに関わる変数
@@ -47,9 +49,9 @@ var xx1 = x1;
 var yy1 = y1 + ySize/6;
 var xx2 = x1 + xSize/6;
 var yy2 = yy1 + vert * (xx2-xx1);
-var vv1 = x2 - xSize/10;
-var ww1 = y2 + ySize/6;
-var vv2 = x2 + xSize/16;
+var vv1 = x2 - xSize/10 - 4*scal;
+var ww1 = y2 + ySize/10;
+var vv2 = x2 + xSize/20 - 4*scal;
 var ww2 = ww1 + vert * (vv2-vv1);
 
 // パーリンノイズ初期値
