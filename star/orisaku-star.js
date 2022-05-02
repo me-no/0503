@@ -147,5 +147,13 @@ function draw() {
     } else {
         image(img, 0, scal*8);//top
     }
+    // sign
+    textFont(font);
+    fill(255,255,255,30);
+    noStroke();
+    textSize(12);
+    text("#ドット絵再考察", 10, height - 16*2, width);
+    text("さよならさんすう", 10, height - 16, width);
+
     noLoop();
 }
