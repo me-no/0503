@@ -1,6 +1,8 @@
 var colorList = [//name, code, tileNumber
  ["blueline" , "#002136"],
  ["darkbrown" , "#684c3c"],
+ ["darkbrown" , "#684c3c"],
+ ["lightbrown" , "#c39a5a"],
  ["lightbrown" , "#c39a5a"],
  ["skin", "#f3d48f"],
  ["white" , "#ffffff"],
