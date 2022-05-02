@@ -39,19 +39,19 @@ var l8 = [34*scal, 27*scal];
 var leftCells = [l1,l2,l3,l4,l5,l6,l7,l8];
 
 // ベジェ曲線の固定点
-var x1 = 50*scal+a;
-var y1 = 70*scal+b;
-var x2 = xSize*1;
-var y2 = (ySize/2 + ySize/4)*1;
+var x1 = 46*scal+a;
+var y1 = 69*scal+b;
+var x2 = xSize*5/4;
+var y2 = (ySize/2 + ySize/4)*5/4;
 // 直交する線上の点
 var vert = -(x2-x1)/(y2-y1);
 var xx1 = x1;-xSize/6
 var yy1 = y1 + ySize/6;
 var xx2 = x1 + xSize/6;
 var yy2 = yy1 + vert * (xx2-xx1);
-var vv1 = x2 - xSize/10;
-var ww1 = y2 + ySize/6;
-var vv2 = x2+xSize/10;
+var vv1 = x2 - xSize/10-30*scal;
+var ww1 = y2 + ySize/6-10*scal;
+var vv2 = x2+xSize/10-30*scal;
 var ww2 = ww1 + vert * (vv2-vv1);
 
 // パーリンノイズ初期値
@@ -96,7 +96,6 @@ function setup () {
     } else {
         image(imgskirt, a, b, 96*scal, 96*scal);
     }
-    console.log(imgDiceFloat);
 }
 
 function draw() {    
@@ -167,6 +166,7 @@ function draw() {
     // ノイズの更新
     paraNoiseL += 0.5;
     paraNoiseR += 0.3;
+    //console.log(placeNoiseLeftMap/leftCells.length);
 
     // ##############################################
     // ランダムとパーリンノイズの切り替えポイントその1 ここまで
@@ -236,8 +236,8 @@ function draw() {
     fill(255);
     noStroke();
     textSize(10);
-    text("#ドット絵再考察", 0, y2-15, width);
-    text("さよならさんすう", 0, y2, width);
+    text("#ドット絵再考察", 0, ySize*4/5, width);
+    text("さよならさんすう", 0, ySize*4/5 + 15, width);
 
     //console.log(colorDiceLeft);
 }
